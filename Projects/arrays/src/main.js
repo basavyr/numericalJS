@@ -35,7 +35,22 @@ function createDynamicArray(size, initValue) {
   }
 }
 
+//arrow function
+let simpleArray = (size, random) => {
+  arr = new Array();
+  for (let i = 0; i < size; i++) {
+    arr.push(random);
+    random = random + 2;
+  }
+  return arr;
+};
+
+//even more simple arrow function
+fun1 = (var1, var2) => Array(var1,var2).sort();
+
 x = createArray(100, 1);
-console.log(x);
+// console.log(x);
 x = createDynamicArray(100, 1);
-console.log(x);
+// console.log(x);
+console.log(simpleArray(3, 1));
+console.log(fun1(5, 1));
