@@ -1,7 +1,5 @@
 let text = "Hi";
 
-console.log(text);
-
 // declaration of arrays
 
 let array1 = [];
@@ -11,12 +9,12 @@ for (let index = 0; index < array2.length; index++) {
   array2[index] = index;
 }
 
-console.log(array2);
+// console.log(array2);
+//get the type of an object
 type = typeof array2;
-console.log(type);
-// check if everything is an array
-console.log(Array.isArray(array2));
-
+// console.log(type);
+// check if an object is an array
+// console.log(Array.isArray(array2));
 
 //create an array from a set of parameters
 function createArray(size, initValue) {
@@ -28,5 +26,16 @@ function createArray(size, initValue) {
   return resArray;
 }
 
+//create a dynamical array
+function createDynamicArray(size, initValue) {
+  returnArr = new Array();
+  for (let index = 0; index < returnArr.length; index++) {
+    initValue = initValue + 1;
+    returnArr.push(initValue);
+  }
+}
+
 x = createArray(100, 1);
-console.log(x)
+console.log(x);
+x = createDynamicArray(100, 1);
+console.log(x);
