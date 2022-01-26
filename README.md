@@ -1,2 +1,3 @@
-# numericalJS
-Project with multiple JavaScript numerical implementations.
+# `numericalJS`
+
+A project with multiple JavaScript numerical implementations.
