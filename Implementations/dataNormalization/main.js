@@ -21,6 +21,8 @@ function randomArray(size, seed) {
   let retArray = new Array(size);
 
   // change the element of the array to a random one
+  // modify the values of an array
+  // https://bobbyhadz.com/blog/javascript-modify-all-array-elements
   for (let index = 0; index < retArray.length; index++) {
     retArray[index] = randomNumber(-seed, seed);
   }
