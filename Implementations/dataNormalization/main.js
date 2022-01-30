@@ -1,7 +1,8 @@
 let app_name = "Normalization app running...";
 
-clog = (object) => {
+clog = (object, ...args) => {
   console.log(object);
+  args.forEach((element) => console.log(element));
 };
 
 /* APP PRINT */
@@ -43,7 +44,21 @@ function arraySorter(array, type) {
 function getMaxValue(array, cap) {
   N = array.length;
   array.sort((a, b) => b - a);
-  clog(array);
+  for (index = 0; index < N; index++) {
+    if (array[index] > cap) {
+      array.splice(index, 1);
+      // splice will skip the next index after loop finished the iteration
+      //source https://love2dev.com/blog/javascript-remove-from-array/
+      index--;
+    }
+  }
+  max_value = array[0];
+  nmax = 1;
+  for (index = 1; index < N; index++) {
+    if (array[index] == max_value) nmax++;
+  }
+
+  return [array, nmax];
 }
 
 function variableArgs(array, cap, ...args) {
@@ -60,8 +75,9 @@ function variableArgs(array, cap, ...args) {
 // arr = randomArray(5, 2);
 // clog(arr);
 
-t_arr = [1, 4, 5, 9, 3, 0, 2, 11];
-// getMaxValue(t_arr);
-clog(arraySorter(t_arr, "desc"));
-clog(arraySorter(t_arr, "asc"));
-clog(arraySorter(t_arr));
+t_arr = [1, 4, 5, 9, 3, 5, 2, 11];
+ret = getMaxValue(t_arr, 5);
+ret.forEach((elem) => clog(elem));
+// clog(arraySorter(t_arr, "desc"));
+// clog(arraySorter(t_arr, "asc"));
+// clog(arraySorter(t_arr));
