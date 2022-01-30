@@ -27,16 +27,41 @@ function randomArray(size, seed) {
   return retArray;
 }
 
+function arraySorter(array, type) {
+  if (array.length == 0) return "no good";
+  if (type == "asc") {
+    retArr = array.sort((a, b) => a - b);
+  } else if (type == "desc") {
+    retArr = array.sort((a, b) => b - a);
+  } else return array.sort((a, b) => a - b);
+  return retArr;
+}
+
 //returns the maximum value within the array
 //if a cap is given, then the function returns the largest value of the array that is smaller than the cap
-function getMaxArray(array, cap, ...args) {
+// if no cap is given, the absolute max of array is returned, with the total number of duplicates (if any)
+function getMaxValue(array, cap) {
+  N = array.length;
+  array.sort((a, b) => b - a);
+  clog(array);
+}
+
+function variableArgs(array, cap, ...args) {
   // the function works with variable number of arguments
   // function uses ES6 paradigm for declaring a variable number of arguments
   // source: https://levelup.gitconnected.com/how-to-write-function-with-n-number-of-parameters-in-javascript-a916de1be7a2#:~:text=When%20you%20call%20a%20function,is%20no%20function%20parameter%20limit.&text=In%20the%20above%20function%2C%20if,the%20first%20two%20parameters%20only.
-  args.forEach((element) => clog(element));
+  //   args.forEach((element) => clog(element));
+  args.forEach((element) => {
+    if (element >= cap) array.push(element);
+  });
+  return array;
 }
 
 // arr = randomArray(5, 2);
 // clog(arr);
 
-getMaxArray([1, 4, 5, 9], 2, 0, [1, 2], 0, 0);
+t_arr = [1, 4, 5, 9, 3, 0, 2, 11];
+// getMaxValue(t_arr);
+clog(arraySorter(t_arr, "desc"));
+clog(arraySorter(t_arr, "asc"));
+clog(arraySorter(t_arr));
