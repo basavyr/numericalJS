@@ -77,8 +77,9 @@ function maxArray(array) {
 }
 
 function Normalize(array, cap) {
-  maxes = maxArray(array);
-  array.forEach((element, index) => (array[index] = element / maxes[0]));
+  let maxes = maxArray(array);
+  let maxval = maxes[0];
+  array.forEach((element, index) => (array[index] = (element / maxval).toPrecision(2)));
   clog(array);
 }
 
@@ -98,6 +99,7 @@ function variableArgs(array, cap, ...args) {
 
 t_arr = [1, 4, 5, 9, 3, 5, 2, 11];
 clog(maxArray(t_arr));
+Normalize(t_arr);
 // clog(arraySorter(t_arr, "desc"));
 // clog(arraySorter(t_arr, "asc"));
 // clog(arraySorter(t_arr));
