@@ -63,6 +63,25 @@ function getMaxValue(array, cap) {
   return [array, nmax];
 }
 
+//get the maximum value of an array together with the position of that maximum value within the array
+function maxArray(array) {
+  let maxval = array[0];
+  let maxindex = 0;
+  for (index = 1; index < array.length; index++) {
+    if (array[index] > maxval) {
+      maxval = array[index];
+      maxindex = index;
+    }
+  }
+  return [maxval, maxindex];
+}
+
+function Normalize(array, cap) {
+  maxes = maxArray(array);
+  array.forEach((element, index) => (array[index] = element / maxes[0]));
+  clog(array);
+}
+
 function variableArgs(array, cap, ...args) {
   // the function works with variable number of arguments
   // function uses ES6 paradigm for declaring a variable number of arguments
@@ -78,8 +97,7 @@ function variableArgs(array, cap, ...args) {
 // clog(arr);
 
 t_arr = [1, 4, 5, 9, 3, 5, 2, 11];
-ret = getMaxValue(t_arr, 5);
-ret.forEach((elem) => clog(elem));
+clog(maxArray(t_arr));
 // clog(arraySorter(t_arr, "desc"));
 // clog(arraySorter(t_arr, "asc"));
 // clog(arraySorter(t_arr));
